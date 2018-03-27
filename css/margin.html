@@ -1,6 +1,14 @@
 <html>
 <head>
     <title>Margin</title>
+    <style>
+        .marginbefore{
+            width:380px;height:200px;margin-right: -50px;float:left;background-color: green;
+        }
+        .marginminus{
+            width:386.66px;height:200px;margin-right: 20px;float:left;background-color: green;
+        }
+    </style>
 </head>
 <body>
 <h1>Margin改变容器尺寸</h1>
@@ -114,5 +122,27 @@ margin-right=auto则会分配这个剩余的空间(虽然此时并没有什么�
 <div style="background-color: grey;position: relative;height: 200px;">
     <div style="background-color: cadetblue;position: absolute;top:0;left:0;right:0;bottom:0;width:300px;height:100px;margin:auto"></div>
 </div>
+<h1>Margin负值定位</h1>
+想要实现两端对齐，此时右侧会有多余的20px，如果修改列表块的宽度会导致空间不够列表3在新的一行
+<div style="background-color: orangered;margin:auto;width:1200px;">
+    <div style="overflow: hidden">
+        <div class="marginbefore">列表1</div>
+        <div class="marginbefore">列表2</div>
+        <div class="marginbefore">列表3</div>
+    </div>
+</div>
+<br/>
+如下，设置装列表的盒子的margin-right为负值，即可改变该盒子的元素尺寸，则不会发生列表3下移
+<div style="background-color: orangered;margin:auto;width:1200px;">
+    <div style="overflow: hidden;margin-right: -20px;">
+        <div class="marginminus">列表1</div>
+        <div class="marginminus">列表2</div>
+        <div class="marginminus">列表3</div>
+    </div>
+</div>
+<div style="float:left;width:100%;background-color: burlywood;">
+    <div style="margin-right: 170px">图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left图片右浮实际float为left</div>
+</div>
+<img width="150px" style="float: left;margin-left: -150px" src="http://img1.imgtn.bdimg.com/it/u=4106322241,526822283&fm=214&gp=0.jpg;">
 </body>
 </html>
