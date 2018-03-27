@@ -1,0 +1,108 @@
+<html>
+<head>
+    <title>Margin</title>
+</head>
+<body>
+<h1>Margin改变容器尺寸</h1>
+<h3>Margin与可视尺寸</h3>
+<p>适用于没有设定width/height的普通block水平元素（改变可视区域的水平宽度）</p>
+<p style="text-decoration:line-through">float元素，absolute/fixed元素，inline水平，table-cell元素，。。。</p>
+<p style="margin:10px 20px;background-color:seagreen;">margin高10px 宽20px</p>
+<p style="margin:10px 30px;background-color:seagreen;">margin高10px 宽30px</p>
+<p style="margin:20px 20px;background-color:seagreen;">margin高20px 宽20px</p>
+<h3>Margin与占据尺寸</h3>
+<p>block/inline-block水平元素均适用，与有没有设定width/height无关，适用于水平方向和垂直方向</p>
+<div style="background-color:rosybrown;">
+    <img src="https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=8748d27dd109b3deffb2ec3aadd607e4/dbb44aed2e738bd4621ac724a18b87d6277ff9e8.jpg">
+    没有设置margin-bottom
+</div>
+<br/>
+<div style="background-color:rosybrown;">
+    <img src="https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=8748d27dd109b3deffb2ec3aadd607e4/dbb44aed2e738bd4621ac724a18b87d6277ff9e8.jpg" style="margin-bottom:100px;">
+    设置了margin-bottom
+</div>
+<h1>Margin与百分比</h1>
+当Margin为百分比数值时，意思是宽和高都是父元素的<strong>宽度</strong>的相应的百分比
+外部容器宽600px，高200px，图片margin设置为20%，可见margin-top和margin-left是一样的，都为容器宽度的20%
+<div style="width:600px;height:200px;background-color:silver;">
+    <img src="https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=8748d27dd109b3deffb2ec3aadd607e4/dbb44aed2e738bd4621ac724a18b87d6277ff9e8.jpg" style="margin:20%;">
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+外部容器宽600px，高200px，图片margin设置为15%，margin-top和margin-left是一样的，但不是容器宽度的15%，因为绝对定位元素的margin百分比是相对于最近的具有定位属性的祖先元素（relative/absolute/fixed）宽度计算的
+<div style="width:600px;height:200px;background-color:silver">
+    <img src="https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=8748d27dd109b3deffb2ec3aadd607e4/dbb44aed2e738bd4621ac724a18b87d6277ff9e8.jpg" style="margin:15%;position:absolute">
+
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+宽高2：1自适应矩形
+<div style="background-color: olive;overflow:hidden;">
+    <div style="margin:50%"></div>
+</div>
+<h1>Margin重叠</h1>
+<p>只发生在block水平元素，不包括float和absolute元素</p>
+<p>不考虑writing-mode，只发生在垂直方向（margin-top,margin-bottom）</p>
+<h3>相邻兄弟元素的margin重叠</h3>
+第一行与第二行之间只有1em
+<p style="line-height: 2em;margin:1em 0;background-color: deepskyblue">第一行</p>
+<p style="line-height: 2em;margin:1em 0;background-color: deepskyblue">第二行</p>
+<h3>父子margin重叠及其条件</h3>
+<p>父元素与第一个或最后一个子元素会margin重叠，条件是：父元素非BFC元素、没有设置border-top/bottom、padding-top/bottom，父元素与第一个/最后一个子元素之间没有inline元素分隔，另外，margin-bottom重叠还有一个条件，父元素没有设置height，min-height，max-height</p>
+<div style="background-color: blanchedalmond">
+    <div style="margin-top:10px;">我是son</div>
+</div>
+<div style="background-color: blanchedalmond;margin-top: 10px;">
+    <div style="margin-top:10px;">我是son</div>
+</div>
+<div style="background-color: blanchedalmond;margin-top: 10px;">
+    <div style="">我是son</div>
+</div>
+以上三种写法是等价的
+<h3>空元素的margin重叠</h3>
+<p>条件：没有设置border，padding，里边没有inline元素，没有height或者min-height</p>
+margin设置为20px，实际高度只有20px，而非40px
+<div style="background-color: bisque;overflow: hidden">
+    <div style="margin:20px"></div>
+</div>
+<h1>Margin重叠计算规则</h1>
+正正取最大，正负相加，负负取最负
+<p></p>
+</body>
+</html>
