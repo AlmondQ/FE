@@ -101,8 +101,18 @@ margin设置为20px，实际高度只有20px，而非40px
 <div style="background-color: bisque;overflow: hidden">
     <div style="margin:20px"></div>
 </div>
-<h1>Margin重叠计算规则</h1>
+<h3 style="margin:0;">Margin重叠计算规则</h3>
 正正取最大，正负相加，负负取最负
-<p></p>
+<h1>Margin auto</h1>
+分配剩余空间：block水平元素默认宽度填满父元素，如下div默认应为宽度填充满父容器，但是强制宽度为500px，则右侧会剩下父元素-500px的宽度
+<div style="width:500px;height: 100px;background-color: seagreen"></div>
+margin-right=auto则会分配这个剩余的空间(虽然此时并没有什么区别)
+<div style="width:500px;height: 100px;background-color: seagreen;margin-right: auto"></div>
+分配原则是，如果一侧为定值一侧为auto，auto为剩余空间大小；如果两侧均是auto，则平分剩余空间，可利用来实现水平居中
+<div style="width:500px;height: 100px;background-color: seagreen;margin:0 auto"></div>
+还可以垂直水平都居中，这就很厉害了！(但是只对IE8以上有效)
+<div style="background-color: grey;position: relative;height: 200px;">
+    <div style="background-color: cadetblue;position: absolute;top:0;left:0;right:0;bottom:0;width:300px;height:100px;margin:auto"></div>
+</div>
 </body>
 </html>
