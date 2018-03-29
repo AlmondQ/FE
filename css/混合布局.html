@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>混合布局</title>
+    <style>
+        body{margin:0;padding:0;}
+        .head{
+            height:100px;
+            background-color: orange;
+        }
+        .foot{
+            height: 50px;
+            background-color: cadetblue;
+            width: 800px;
+            margin: 0 auto;
+        }
+        .cupcontainer{
+            overflow: hidden;
+            padding:0 300px;
+        }
+        .cupmain, .cupleft, .cupright{
+            height:400px;
+        }
+        .cupmain{
+            float:left;
+            width:100%;
+            background-color: deepskyblue;
+        }
+        .cupleft{
+            float:left;
+            margin-left: -100%;
+            width: 300px;
+            background-color: burlywood;
+            position:relative;
+            left:-300px;
+        }
+        .cupright{
+            float:left;
+            margin-left: -300px;
+            width: 300px;
+            background-color: darkseagreen;
+            position:relative;
+            right:-300px;
+        }
+        .flycontainer{
+            overflow: hidden;
+        }
+        .flymain, .flyleft, .flyright{
+            height: 400px;
+        }
+        .flymain{
+            float:left;
+            width:100%;
+            background-color: darkseagreen;
+
+        }
+        .flyleft{
+            float:left;
+            width: 300px;
+            background-color: bisque;
+            margin-left: -100%;
+        }
+        .flyright{
+            float: left;
+            width: 200px;
+            background-color: rosybrown;
+            margin-left: -200px;
+        }
+        .flymainmain{
+            margin:0 200px 0 300px;
+        }
+    </style>
+</head>
+<body>
+<h1>圣杯布局</h1>
+<div class="head">head</div>
+<div class="cupcontainer">
+    <div class="cupmain">圣杯布局和双飞翼布局解决的问题是一样的，就是两边定宽，中间自适应的三栏布局，中间栏要放在文档流前面以优先渲染。
+
+        但是圣杯布局和双飞翼布局在实现方式上有一点差别。</div>
+    <div class="cupleft"></div>
+    <div class="cupright"></div>
+</div>
+<div class="foot">foot</div>
+<h1>双飞翼布局</h1>
+<div class="head">head</div>
+<div class="flycontainer">
+    <div class="flymain">
+        <div class="flymainmain">圣杯布局和双飞翼布局解决的问题是一样的，就是两边定宽，中间自适应的三栏布局，中间栏要放在文档流前面以优先渲染。
+
+            但是圣杯布局和双飞翼布局在实现方式上有一点差别。</div>
+    </div>
+    <div class="flyleft"></div>
+    <div class="flyright"></div>
+</div>
+<div class="foot">foot</div>
+
+</body>
+</html>
