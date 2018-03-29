@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        function openwin(){
+            window.open("http://www.baidu.com","_blank");
+        }
+        function changecolor(){
+            document.getElementsByName("overme")[0].style.color = "red";
+        }
+        function changecolor2(){
+            document.getElementsByName('overme')[0].style.color = "green";
+        }
+        var tag = true;
+        function message(){
+            if(tag){
+                alert("请选择职业");
+                tag = false;
+            }
+        }
+        function message2(){
+                alert("已选择浏览器");
+        }
+        function paste(){
+            alert("选中了！");
+        }
+        function changetext(){
+            alert("改变了!")
+        }
+        function finish() {
+            alert("加载完成！")
+        }
+    </script>
+</head>
+<body>
+<h1>鼠标单击事件（onclick）</h1>
+<input name="clickme" type="button" onclick="openwin()" value="点击我"/>
+<h1>鼠标经过事件（onmouseover）鼠标移开事件（onmouseout）</h1>
+<input name="overme" type="text" onmouseover="changecolor()" value="鼠标放上来变红色移开变绿色" onmouseout="changecolor2()"/>
+<h1>光标聚焦事件（onfocus）</h1>
+<form>
+    <select name="career" onfocus="message()">
+        <option>老师</option>
+        <option>医生</option>
+        <option>警察</option>
+    </select>
+</form>
+<h1>失焦事件（onblur）</h1>
+<label><input type="text" onblur="message2()"></label>
+<h1>内容选中事件（onselect）</h1>
+<textarea onselect="paste()" placeholder="emm">选中我试一试,当文本框或者文本域中的文字被选中时</textarea>
+<h1>文本框内容改变事件（onchange）</h1>
+<label><input type="text" value="emm" onchange="changetext()"/></label>
+<h1>加载事件（onload）</h1>
+<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522352352859&di=b1ec61a9630d898722917a3686deb35a&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201506%2F04%2F20150604111721_ZA5iN.jpeg" onload="finish()"/>
+<h1>卸载事件（onunload）</h1>
+<p>当用户退出页面时（页面关闭、页面刷新等），触发onUnload事件，同时执行被调用的程序。 注意：不同浏览器对onunload事件支持不同。</p>
+<textarea style="width: 500px;height: 200px">
+
+        window.onunload = onunload_message;
+        function onunload_message(){
+            alert("您确定离开该网页吗？");
+        }
+    ①目前试了Firefox、Google Chrome、IE三个浏览器，该事件只对IE起作用。
+
+    ②onunload事件对于刷新页面和超链接跳转其他页面情况有效，对于关闭页面无效。
+
+    ③onbeforeunload事件才对关闭页面有效。
+</textarea>
+</body>
+</html>
