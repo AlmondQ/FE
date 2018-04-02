@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        var arr = new Array();
+        var arr2 = new Array(3);
+        var arr3 = new Array("apple");
+        var arr4 = [];
+        var arr5 = ["apple","pear"];
+        var colors = ["red", "green", "blue"];
+        var compa = [1,5,10,6,22];
+
+        document.write(arr.length, arr2.length, arr3.length, arr4.length,arr5.length,"<br/>") //03102
+
+        arr5.push("watermelon","peach"); //栈方法
+        document.write(arr5,"<br/>"); //apple,pear,watermelon,peach
+        document.write(arr5.pop(),"<br/>"); //栈方法，peach
+        document.write(arr5,"<br/>"); //apple,pear,watermelon
+
+        arr3.length = 5;
+        document.write(arr3,"<br/>"); //apple,,,,
+        document.write(arr3[3],"<br/>"); // undefined
+
+        document.write(arr5.shift(),"<br/>"); //队列方法从数组中取出第一项,apple
+        document.write(arr5,"<br/>"); //pear,watermelon
+        var len5 = arr5.unshift("strawberry", "coconut"); //队列方法，在数组前端添加任意个项，并返回数组新长度
+        document.write(len5+",",arr5,"<br/>");//4,strawberry,coconut,pear,watermelon
+
+        document.write(colors.join("||"),"<br/>");//red||green||blue
+
+        document.write(Array.isArray(colors),"<br/>");//检测数组,true
+
+        document.write(compa.reverse()+"<br/>");//22,6,10,5,1
+        document.write(compa.sort()+"<br/>");//1,10,22,5,6，因为比较的是字符串，所以1、2开头的在5前面
+        function compare(value1, value2){
+            if(value1>value2){
+                return 1;
+            }else if(value1<value2){
+                return -1;
+            }else{
+                return 0;
+            }
+        }
+        document.write(compa.sort()+"<br/>");//
+        document.write(compa.sort(compare)+"<br/>");//sort方法可以接受一个比较函数作为参数，以便指定哪个值位于哪个值的前面，1,5,6,10,22
+    </script>
+</head>
+<body></body>
+</html>
