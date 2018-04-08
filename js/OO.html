@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        //构造函数模式,缺点:新建很多个函数对象
+        function Person(name,age,job){
+            this.name = name;
+            this.age = age;
+            this.job = job;
+            this.sayName = function(){
+                document.write(this.name);
+            };
+        }
+
+        var person1 = new Person('lisi','35','teacher');
+        var person2 = new Person('wangwu','46','policeman');
+        person1.sayName(); //lisi
+        person2.sayName(); //wangwu
+
+        //原型模式
+        function Person2(){}
+        Person2.prototype.name = 'liuneng';
+        Person2.prototype.age ='11';
+        Person2.prototype.job = 'doctor';
+        Person2.prototype.sayName2 = function(){document.write(this.name);};
+
+        var person3 = new Person2();
+        person3.sayName2(); //liuneng
+        document.write(Person2.prototype.isPrototypeOf(person3)); //判断对象的原型对象，true;
+        document.write(Object.getPrototypeOf(person3)===Person2.prototype);//获取对象的原型对象，true
+
+        //不会覆盖原型中的name属性
+        person3.name = 'zhaosi';
+        document.write(person3.name); //zhaosi
+        //删除实例中的name属性后，可以继续访问原型的name
+        delete person3.name;
+        document.write(person3.name);//liuneng
+
+        //区分属性是实例属性还是原型属性
+        person3.keyword = 'nice';
+        document.write(person3.hasOwnProperty('name')); //false
+        document.write(person3.hasOwnProperty('keyword')); //true
+    </script>
+</head>
+<body></body>
+</html>
