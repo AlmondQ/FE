@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        //原型链，将一个类的原型对象指向另一个类的实例，则这个类将会获得另一个类的属性和方法
+        function Supertype(){
+            this.property = true;
+        }
+
+        Supertype.prototype.getSuperProperty = function(){
+            document.write(this.property);
+        };
+
+        function Subtype(){
+            this.subProperty = false;
+        }
+
+        Subtype.prototype = new Supertype();
+
+        Subtype.prototype.getSubProperty = function(){
+            document.write(this.subProperty);
+        };
+
+        var subtype = new Subtype();
+        subtype.getSuperProperty(); //true
+
+        //原型链会导致父类的引用类型实例对象变为子类的共享对象，借用构造函数，constructor stealing可以解决这个问题，还可向父类构造函数传递参数
+        function Supertype2(name){
+            this.colors = ["red","blue"];
+            this.name = name;
+        }
+
+        function Subtype2(){
+            Supertype2.call(this, "lisi");
+        }
+
+        var subtype2 = new Subtype2();
+        var subtype3 = new Subtype2();
+        subtype2.colors.push("black"); //"red", "blue", "black"
+        document.write(subtype3.colors); //"red", "blue"
+
+        //但是借用构造函数无法复用函数，且父类的函数对子类不可见，所以需要用到组合继承
+
+        function Supertype3(name){
+            this.name = name;
+        }
+
+        Supertype3.prototype.sayName = function(){
+            return this.name;
+        };
+
+        function Subtype3(name){
+            Supertype3.call(this,name);
+        }
+
+        Subtype3.prototype = new Supertype3();
+        Subtype3.prototype.constructor = Subtype3;
+        var subtype4 = new Subtype3("liuneng");
+        subtype4.sayName();
+        var subtype5 = new Subtype3("xieguangkun");
+        subtype5.sayName();
+
+    </script>
+</head>
+<body></body>
+</html>
