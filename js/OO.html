@@ -40,6 +40,74 @@
         person3.keyword = 'nice';
         document.write(person3.hasOwnProperty('name')); //false
         document.write(person3.hasOwnProperty('keyword')); //true
+
+        //in操作符会在通过对象能够访问给定属性时返回true，无论是实例属性还是原型属性
+        document.write("name" in person3); //true;
+        document.write("keyword" in person3); //true
+
+        //Object.keys()返回对象上所有可枚举的实例属性
+        Object.keys(Person2.prototype); //"name","age","job","sayName2"
+        Object.keys(person3); //"keyword"
+        //Object.getOwnPropertyNames()得到所有实例属性，包括不可枚举的（[[Enumerable]]为false）
+        Object.getOwnPropertyNames(Person2.prototype); //"constructor","name","age","job","sayName2"
+
+        //更简单的原型语法，注意，此时原型对象的constructor不再指向Person3,因为此时重写了默认的prototype对象
+        function Person3(){}
+        Person3.prototype = {
+            name:"xieguangkun",
+            age:"60",
+            job:"driver",
+            sayName3:function(){
+                document.write(this.name);
+            }
+        };
+        document.write(Person3.prototype.constructor == Person3); //false
+        document.write(Person3.prototype.constructor == Object); //true
+
+        //如果constructor的值很重要，可以这样写,这样会导致constructor的[[Enumerable]]变为true
+        function Person4(){}
+        Person4.prototype = {
+            constructor:Person4,
+            name:"xieguangkun",
+            age:"60",
+            job:"driver",
+            sayName4:function(){
+                document.write(this.name);
+            }
+        };
+
+        //上面的方法会由于共享属性问题导致通过一个实例对象修改原型属性会反映到另一个实例对象上，下面这种构造函数模式与原型模式可以解决此问题
+        function Person5(name,age,job){
+            this.name = name;
+            this.age=age;
+            this.job = job;
+            this.friends = ["shelly","marry"];
+        }
+
+        Person5.prototype.sayName5 = function(){
+            document.write(this.name);
+        };
+
+        var person4 = new Person5("madajiao","45","nurse");
+        var person5 = new Person5("songxiaofeng","33","baoan");
+        person4.friends.push("john");
+        person4.friends; //"shelly", "marry", "john"
+        person5.friends; //"shelly", "marry"
+        person4.friends === person5.friends; //false
+        person4.sayName5 === person5.sayName5; //true
+
+        //动态原型模式
+        function Person6(name,age,job){
+            this.name = name;
+            this.age = age;
+            this.job = job;
+
+            if(typeof this.sayName6 !== "function"){
+                Person6.prototype.sayName6 = function(){
+                    document.write(this.name);
+                };
+            }
+        }
     </script>
 </head>
 <body></body>
