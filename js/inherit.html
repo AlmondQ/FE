@@ -60,6 +60,67 @@
         var subtype5 = new Subtype3("xieguangkun");
         subtype5.sayName();
 
+        //原型式继承
+        function object(o){
+            function F(){}
+            F.prototype = o;
+            return new F();
+        }
+
+        var person = {
+            name:"zhaosi",
+            colors : ["blue","red"]
+        };
+
+        var person1 = object(person);
+        var person2 = object(person);
+        person1.name = "wangwu";
+        person2.name = "liuneng";
+
+        //ES5规范化了原型式继承
+        var person3 = Object.create(person);
+        person3.name; //zhaosi
+        var person4 = Object.create(person,{name:{value:"xiguangkun"}});
+        person4.name; //xieguangkun
+
+        //寄生式继承
+        function another(original){
+            var o = object(original);
+            o.sayHi = function(){document.write("Hi")};
+            return o;
+        }
+
+        var person5 = another(person);
+        person5.sayHi();
+
+        //寄生组合式继承
+        function inheritPrototype(superType,subType){
+            var prototype = object(superType.prototype);
+            prototype.constructor = subType;
+            subType.prototype = prototype;
+        }
+
+        function Supertype4(name){
+            this.name =name;
+            this.colors = ["red","blue"];
+        }
+
+        Supertype4.prototype.sayName = function(){document.write(this.name)};
+
+        function Subtype4(name,age){
+            Supertype4.call(this, name);
+            this.age = age;
+        }
+
+        inheritPrototype(Supertype4,Subtype4);
+
+        Subtype4.prototype.sayAge = function(){document.write(this.age)};
+
+        person6 = new Subtype4("aww","11");
+        person6.sayAge();
+        person6.sayName();
+
+
     </script>
 </head>
 <body></body>
