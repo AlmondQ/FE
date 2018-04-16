@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        //闭包：即函数返回函数，内部函数使用外部的参数
+        function a(){
+            var result = [];
+            for(var i=0;i<3;i++){
+
+                result[i] = function(){
+                    return i+1;
+                };
+            }
+            return result;
+        }
+
+        var result = a();
+        result[0](); //4
+        result[1](); //4
+        result[2](); //4
+        //都是4，因为当调用result的3个函数时，每个函数的作用域链都是a中的i，是同一个i，a中的i已经是3了
+
+        //添加一个立即执行函数，把i的复制给参数num，每个result的函数的作用域链上是立即执行函数中的num，而非i
+        function b(){
+            var result = [];
+            for (var i=0;i<3;i++){
+                result[i] = function(num){
+                    return function(){
+                      return num+1;
+                    };
+                }(i);
+            }
+            return result;
+        }
+
+        var result2 = b();
+        result2[0](); //1
+        result2[1](); //2
+        result2[2](); //3
+
+        //this
+
+        var color = "blue";
+        var object = {
+            color:"red",
+            getColor:function(){return function(){return this.color};}
+        };
+
+        object.getColor()(); //blue，因为内部函数搜索this和arguments这两个变量时，只会搜索到其活动对象为止，因此永远不可能直接访问外部函数的这两个变量
+
+        var object2 = {
+            color:"red",
+            getColor:function(){var that = this;return function(){return that.color};}
+        };
+
+        object2.getColor()();//red，此时把this对象复制给了一个名叫that的变量，在定义了闭包之后，闭包也仍然可以访问这个对象
+
+        //利用私有和特权成员，可以隐藏那些不应该直接被修改的数据
+        function Person(name){
+            this.getName = function(){
+                return name;
+            };
+
+            this.setName = function(value){
+                name = value;
+            };
+        }
+
+        var p1 = new Person("lee");
+        p1.getName(); //"lee"
+        p1.setName("bai");
+        p1.getName(); //"bai"
+
+        //静态私有变量，name成为公有属性
+
+        (function(){
+            var name = "";
+
+            InPerson = function(value){name = value};
+            InPerson.prototype.getName = function(){return name+"hello";};
+        })();
+
+        var p1 = new InPerson("p1");
+        p1.getName(); //p1hello;
+        var p2 = new InPerson("p2");
+        p2.getName(); //p2hello
+        p1.getName();//p2hello
+
+    </script>
+</head>
+<body></body>
+</html>
