@@ -71,7 +71,7 @@
         p1.setName("bai");
         p1.getName(); //"bai"
 
-        //静态私有变量，name成为公有属性
+        //静态私有变量，name成为所有实例的共享属性
 
         (function(){
             var name = "";
@@ -85,6 +85,36 @@
         var p2 = new InPerson("p2");
         p2.getName(); //p2hello
         p1.getName();//p2hello
+
+        //模块模式，在需要对单例初始化同时需要维护其私有变量时非常有用
+        var application = function(){
+            var module = ["new"];
+            return {
+                getModule:function(){return module;},
+                changeModule : function(mo){module.push(mo)}
+            };
+        }();
+
+        application.changeModule("old");
+        application.getModule(); //"new", "old"
+
+        //增强的模块模式，如果要求application为某一类型的实例时
+        function App(){
+        }
+        var application2 = function(){
+            var module = ["new"];
+            var app = new App();
+            app.getModule = function(){return module;};
+            app.changeModule = function(mo){module.push(mo);};
+            return app;
+        }();
+
+        application2.getModule(); //"new"
+        application2.changeModule("old");
+        application2.getModule(); //"new","old"
+        if(application2 instanceof App){
+            document.write("yes")
+        } //yes
 
     </script>
 </head>
