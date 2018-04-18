@@ -1,0 +1,81 @@
+        .body{
+            max-width:1320px;
+            margin:0 auto;
+        }
+        .body-left{
+            background-color: #fff;
+            width:20%;
+            margin-top:40px;
+
+        }
+        #avatar{
+            display:block;
+            width:128px;
+            height:128px;
+            margin:0 auto;
+            padding:15px 0;
+        }
+        #name,#motto,#location{
+            text-align: center;
+            color:pink;
+            margin:5px 0;
+        }
+
+        .profile{
+            border-bottom: 1px #eceff2 solid;
+            padding-bottom: 10px;
+        }
+        #follow{
+            border-radius: 21px;
+            font: 16px bold;
+            color:#fff;
+            outline: none;
+            padding: 5px 25px;
+            margin: 10px auto;
+            background-color: deepskyblue;
+            border:none;
+            display:block;
+            text-decoration: none;
+            text-align: center;
+            width: 50%;
+        }
+
+        .article-info{
+            overflow:hidden;
+        }
+
+        .article-num,.article-tags{
+            float:left;
+            padding:15px 0;
+        }
+
+        .article-num{
+            width: 50%;
+            border:#eceff2 solid;
+            border-width: 0 1px 0 0;
+        }
+        .article-tags{
+            width: 49.5%;
+        }
+        h5.num{
+            text-align: center;
+            font-size: 16px;
+            color:pink;
+        }
+        .sns{
+            padding:15px 0;
+            border-top: 1px solid #eceff2;
+            display:table;
+            width: 100%;
+        }
+
+        .sns table{
+            width: 100%;
+        }
+        .sns table td{
+            text-align: center;
+        }
+        .sns a{
+            text-decoration: none;
+            color:grey;
+        }

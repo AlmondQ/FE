@@ -1,0 +1,55 @@
+        *{padding:0;margin:0;}
+        body{
+            background-color: #f5f8f9
+        }
+        div.head{
+            height:64px;
+            background-color: #fff;
+        }
+        div.wrap{
+            display:table;
+            height:100%;
+            float:left;
+        }
+        span.head,.a-head{
+            display:table-cell;
+            vertical-align: middle;
+            font-family:"Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace
+        }
+        span.head{font-weight: bold;
+            font-size: 16px;
+            color: grey;
+            padding:0 30px 0 75px;
+        }
+        a:first-child{padding: 0;}
+        .a-head{
+            text-decoration: none;
+        }
+        .a-head{
+            color:grey;
+            padding:0 15px 0 15px;
+        }
+        .a-head:hover{
+            color:deepskyblue;
+        }
+        div.form-wrap{
+            display:table;
+            float:right;
+            margin-right:75px;
+            height:64px;
+        }
+        .form-head{
+            display:table-cell;
+            vertical-align: middle;
+        }
+        .input-head{
+            outline:none;
+            height:40px;
+            line-height: 40px;
+            padding:0 30px 0 15px;
+            border:1px solid #eceff2;
+            border-radius: 21px;
+            font:14px "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif
+        }
+
+        #search{border:none;margin-left:-30px;}
