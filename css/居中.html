@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            display: inline;
+        }
+
+        #nowidth-position-wrap:after{
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        #horizon a{
+            text-decoration: none;
+            display: table-cell;
+            text-align: center;
+        }
+
+        #vertical a{
+            text-decoration: none;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+    </style>
+</head>
+<body>
+<h1>水平居中</h1>
+<h3>行内元素</h3>
+设置父元素的text-align:center，前提是子元素没有被float影响
+<div style="text-align: center;"><button type="submit" style="border-radius: 21px;">提交</button></div>
+<h3>定宽块状元素</h3>
+<div style="width:80%;margin:0 auto;background-color: pink;">定宽块状元素设置margin:0 auto;</div>
+<h3>不定宽块状元素</h3>
+<br/>
+一种方法是给父元素设置display:table，利用table的长度自适应变为定宽块状元素，再margin: 0 auto;设置完以后padding会失效
+<div id="nowidth-table" style="display: table;margin:0 auto;">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</div>
+
+<ul id="nowidth-table2" style="display: table;margin:0 auto;">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+在ul外边加一层div再设置display:table与直接在ul设置display:table不太一样，后者li标签间隔的空格不见了
+<br/>
+<br/>
+另一种方法是利用相对定位,先设置父元素wrap清除浮动，然后左浮动。定位让wrap向右偏移50%。然后定义子元素相对于父元素向左偏移50%。脱离父元素。
+<div id="nowidth-position-wrap" style="position: relative;">
+    <div id="nowidth-position" style="position: relative;float: left; left: 50%">
+        <ul style="position: relative; left: -50%;">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+</div>
+父元素宽度固定，想要子元素平均充满整个父元素，父元素display:table，子元素display:table-cell，此时子元素不受margin失效但是padding不失效
+<div id="horizon" style="width:400px;background-color: pink;display: table;">
+    <a href="javascript:void(0)">123</a>
+    <a href="javascript:void(0)">145</a>
+    <a href="javascript:void(0)">167</a>
+    <a href="javascript:void(0)">167</a>
+</div>
+<h1>垂直居中</h1>
+<h3>容器display:table;子元素display:table-cell;verical-align: middle;</h3>
+<div id="vertical" style="width:400px;height: 100px;background-color: pink;display: table;">
+    <a href="javascript:void(0)">123</a>
+    <a href="javascript:void(0)">145</a>
+    <a href="javascript:void(0)">167</a>
+    <a href="javascript:void(0)">167</a>
+</div>
+</body>
+</html>
