@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+
+            .parent{
+                background-color: pink;
+                display: flex;
+                display: -webkit-flex;
+                height: 200px;
+                
+            }
+            .parent1{
+                flex-direction: row-reverse;
+            }
+
+            .son{
+                display: block;
+                background-color: white;
+                height:50px;
+                width: 50px;
+            }
+
+            .son2{
+                display: block;
+                background-color: orange;
+                height:50px;
+                width: 100px;
+            }
+
+            .parent2{
+                flex-wrap: wrap-reverse;
+            }
+
+            .parent3{
+                justify-content: space-around;
+            }
+
+            .parent4{
+                align-items: center;
+            }
+
+            .parent5{
+                flex-wrap: wrap;
+                align-content: space-between;
+            }
+
+            .parent5 div{
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
+            }
+
+            .box{
+                display:flex;
+                background-color: pink;
+            }
+
+            .box .son, .box .son2{
+                text-align: center;
+                line-height: 50px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1><a style="text-decoration: none;" href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">Flex</a></h1>
+        <h2>容器属性</h2>
+        <h3>flex-direction</h3>
+        row,row-reverse,column, column-reverse
+        <div class="parent parent1">
+            <span class="son"></span>
+            <span class="son"></span>
+            <span class="son2"></span>
+            <span class="son"></span>
+            <span class="son"></span>
+            <span class="son"></span>
+        </div>
+        <h3>flex-wrap</h3>
+        nowrap, wrap, wrap-reverse
+        <div class="parent parent2">
+            <span class="son"></span>
+            <span class="son"></span>
+            <span class="son2"></span>
+            <span class="son"></span>
+            <span class="son"></span>
+            <span class="son2"></span>
+            <span class="son2"></span>
+            <span class="son"></span>
+            <span class="son"></span>
+        </div>
+        <h3>flex-flow</h3>
+        是flex-direction和flex-wrap的简写形式，默认为row nowrap
+        <h3>justify-content</h3>
+        flex-start,flex-end,center,space-between,space-around
+        <div class="parent parent3">
+            <span class="son"></span>
+            <span class="son"></span>
+            <span class="son2"></span>
+            <span class="son"></span>
+            <span class="son"></span>
+            <span class="son2"></span>
+            <span class="son2"></span>
+            <span class="son"></span>
+        </div>
+        <h3>align-items</h3>
+        flex-start,flex-end,center,baseline,stretch
+        <div class="parent parent4">
+            <span class="son"></span>
+            <span class="son"></span>
+            <span class="son2"></span>
+            <span class="son"></span>
+            <span class="son"></span>
+            <span class="son2"></span>
+            <span class="son2"></span>
+            <span class="son"></span>
+        </div>
+        <h3>align-content</h3>
+        应用在多个轴线之间，单个轴线不起作用flex-start,flex-end,center,space-between,space-around,stretch
+        <div class="parent parent5">
+            <div>
+                    <span class="son"></span>
+                    <span class="son"></span>
+                    <span class="son2"></span>
+                    <span class="son"></span>
+                    <span class="son"></span>
+                    <span class="son2"></span>
+                    <span class="son2"></span>
+                    <span class="son"></span>
+            </div>
+            <div>
+                    <span class="son"></span>
+                    <span class="son"></span>
+                    <span class="son2"></span>
+                    <span class="son"></span>
+                    <span class="son"></span>
+                    <span class="son2"></span>
+                    <span class="son2"></span>
+                    <span class="son"></span>
+            </div>
+        </div>
+        <h2>项目属性</h2>
+        <h3>order</h3>
+        order:&lt;integer&gt;项目排列顺序，数值越小，排列越靠前，默认为0
+        <div class="box">
+            <div class="son" style="order:1;">1</div>
+            <div class="son2" style="order:-1;">2 order:-1</div>
+        </div>
+        <h3>flex-grow</h3>
+        flex-grow:&lt;number&gt;定义项目的放大比例，默认为0，即不放大
+        <div class="box box2" style="height:200px;">
+            <div class="son" style="flex-grow: 1;">1</div>
+            <div class="son2" style="flex-grow: 2;">2</div>
+        </div>
+        <h3>flex-shrink</h3>
+        flex-shrink:&lt;number&gt;定义项目的缩小比例，默认为1
+        <div class="box box2" style="height:200px;">
+            <div class="son" style="width:1000px;flex-shrink: 2;font-size: 8px;">1</div>
+            <div class="son2" style="flex-shrink: 0;font-size: 10px;line-height: 25px">2 shrink:0，不缩小</div>
+        </div>
+    </body>
+</html>

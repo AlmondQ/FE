@@ -1,7 +1,8 @@
 
-        div.head{
+        .head{
             height:64px;
             background-color: #fff;
+            padding: 0 50px;
         }
         div.wrap{
             display:table;
