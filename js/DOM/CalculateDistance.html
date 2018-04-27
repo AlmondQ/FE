@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            .div1{
+                background-color: deepskyblue;
+                margin: 10px 0 10px 5px;
+                padding: 5px 10px 10px 15px;
+            }
+            .div2{
+                background-color: pink;
+                margin: 5px 10px 0 15px;
+                padding: 15px 5px 5px 0;
+            }
+        </style>
+        <script src="./CalculateDistance.js"></script>
+    </head>
+    <body>
+        <div class="div1">
+            这是第一个div
+        </div>
+        <div class="div2">
+            这是第二个div
+        </div>
+        <script>
+                var div1 = new divCenterPos("div1");
+                var div2 = new divCenterPos("div2");
+                var distanceX = Math.abs(div1.divPosX-div2.divPosX);
+                var distanceY = Math.abs(div1.divPosY-div2.divPosY);
+                var centerDistance = Math.sqrt(Math.pow(distanceX, 2)+Math.pow(distanceY,2));
+                var div1Left = new divLeftPos("div1");
+                var div2Left = new divLeftPos("div2");
+                var distanceLeftX = Math.abs(div1Left.divPosX-div2Left.divPosX);
+                var distanceLeftY = Math.abs(div1Left.divPosY-div2Left.divPosY);
+                var leftDistance = Math.sqrt(Math.pow(distanceLeftX, 2)+Math.pow(distanceLeftY,2));
+                console.log(centerDistance);
+                console.log(leftDistance);
+            </script>
+    </body>
+</html>
