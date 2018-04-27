@@ -23,6 +23,8 @@
         <div class="div2">
             这是第二个div
         </div>
+        <button id="center">显示中心点的距离</button>
+        <button id="left">显示左上角的距离</button>
         <script>
                 var div1 = new divCenterPos("div1");
                 var div2 = new divCenterPos("div2");
@@ -36,6 +38,12 @@
                 var leftDistance = Math.sqrt(Math.pow(distanceLeftX, 2)+Math.pow(distanceLeftY,2));
                 console.log(centerDistance);
                 console.log(leftDistance);
+                document.querySelector("#center").onclick = function(){
+                    alert(centerDistance);
+                }
+                document.getElementById("left").onclick = function(){
+                    alert(leftDistance);
+                }
             </script>
     </body>
 </html>
