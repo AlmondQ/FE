@@ -29,5 +29,28 @@
         IE事件处理程序。。。没有IE浏览器很尴尬。。。总之就是attachEvent/detachEvent，接收两个参数，("onclick",function(){})，作用域为全局
         <br/>
         跨浏览器的事件处理程序
+        <br/>
+        <script type="text/javascript">
+            var EventUtil = {
+            addHandler: function(element, type, handler){
+                if(element.addEventListener){
+                    element.addEventListener(type, handler, false);
+                }else if(element.attachEvent){
+                    element.attachEvent("on"+type, handler);
+                }else{
+                    element["on"+type] = handler;
+                }
+            },
+            removeHandler: function(element, type, handler){
+                if(element.removeEventListener){
+                    element.removeEventListener(type, handler, false);
+                }else if(element.dettachEvent){
+                    element.dettachEvent("on"+type, handler);
+                }else{
+                    element["on"+type] = null;
+                }
+            }
+        };
+        </script>
     </body>
 </html>
