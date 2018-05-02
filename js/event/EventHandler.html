@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        DOM0级事件处理程序，在元素的作用域中运行，也就是this引用当前元素，点击下面按钮先显示按钮的id，再显示body clicked，也就是此时为事件冒泡阶段
+        <br/>
+        <input value="dom0" id="dom0" type="button"/>
+        <br/>
+        <script type="text/javascript">
+            document.body.onclick = function(){
+                alert("body clicked1");
+                alert(event.target.tagName); //INPUT
+                alert(event.currentTarget.tagName);//BODY
+            }
+            document.getElementById("dom0").onclick = function(){
+                alert(this.id);
+            }
+        </script>
+        DOM2级事件处理程序，addEventListener/removeEventListener，接收3个参数：要处理的事件名，作为事件处理程序的函数，和一个布尔值。作用域为该元素
+        <br/>
+        <input type="button" value="dom2" id="dom2"/>
+        <script type="text/javascript">
+            document.getElementById("dom2").addEventListener("click", function(){alert("button clicked")}, false); //false为冒泡阶段，true为事件捕获阶段
+            document.body.addEventListener("click", function(){alert("body clicked2")}, false); //此时会先显示body clicked1，再执行此事件
+        </script>
+        <br/>
+        IE事件处理程序。。。没有IE浏览器很尴尬。。。总之就是attachEvent/detachEvent，接收两个参数，("onclick",function(){})，作用域为全局
+        <br/>
+        跨浏览器的事件处理程序
+    </body>
+</html>
