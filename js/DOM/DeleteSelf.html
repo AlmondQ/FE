@@ -24,8 +24,10 @@
     </body>
     <script type="text/javascript">
         var inner1 = document.getElementById("inner1");
-        inner1.addEventListener("click", function(){
-            this.parentNode.removeChild(this);
+        inner1.addEventListener("click", function(event){
+            if(event.target == document.getElementById("delete")){
+                this.parentNode.removeChild(this);
+            }
         }, false);
     </script>
 </html>
