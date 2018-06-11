@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animation</title>
+    <style>
+        /* @keyframes example{
+            from {background-color: aqua;left: 100px; top:0px}
+            to {background-color: beige;}
+        } */
+
+            @keyframes example{
+            0% {background-color: green; left: 0; top:0;}
+            25% {background-color: beige; left: 100px; top: 0;}
+            50%{background-color: orange; left: 100px; top: 100px;}
+            75%{background-color: pink; left: 0; top: 100px;}
+            100%{background-color: aqua; left: 0; top:0;}
+        }
+
+        div {
+            width: 30%;
+            position: relative;
+            animation-name: example;
+            animation-duration: 4s;
+            animation-iteration-count: 1;
+            animation-delay: 2s;
+            animation-direction: reverse; /*alternate alternate-reverse*/
+            animation-timing-function: ease; /*ease-in ease-out linear ease-in-out*/
+            animation-fill-mode: both;   /*forwards backwards*/
+        }
+    </style>
+</head>
+<body>
+    <div>我会变色哦</div>
+</body>
+</html>
