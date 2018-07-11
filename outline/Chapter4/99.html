@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>九九乘法表</title>
+</head>
+<body>
+    <h3></h3>
+</body>
+<script>
+    var text="";
+    for(var i=1; i<10; i++){
+        for(var j=i;j<10;j++){
+            text += i+"*"+j+"&nbsp;&nbsp;&nbsp;";
+        }
+        text += "<br/>";
+    }
+    document.getElementsByTagName("h3")[0].innerHTML = text;
+</script>
+</html>

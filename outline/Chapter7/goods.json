@@ -1,0 +1,22 @@
+[
+    {
+        "name": "lipstick",
+        "price": "200"
+    },
+    {
+        "name": "face cleanser",
+        "price": "99"
+    },
+    {
+        "name": "makeup remover",
+        "price": "130"
+    },
+    {
+        "name": "BB cream",
+        "price": "420"
+    },
+    {
+        "name": "powder",
+        "price": "70"
+    }
+]

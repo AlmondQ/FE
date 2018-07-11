@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                    // console.log(typeof xhr.responseText); //string
+                    function srt(key, desc) {
+                        return function (a, b) {
+                            return desc ? b[key] - a[key] : a[key] - b[key];
+                        };
+                    }
+                    var myLove = JSON.parse(xhr.responseText);
+                    myLove.sort(srt("price", true));
+                    // console.log(myLove instanceof Array); //true
+                    var table = document.querySelector("table");
+                    for (var i = 0; i < myLove.length; i++) {
+                        var tr = document.createElement("tr");
+                        for (var j in myLove[i]) {
+                            var td = document.createElement("td");
+                            td.innerHTML = myLove[i][j];
+                            tr.appendChild(td);
+                        }
+                        table.appendChild(tr);
+                    }
+                } else {
+                    console.log("error");
+                }
+            }
+        };
+
+        xhr.open("get", "./goods.json", true);
+        xhr.send(null);
+    </script>
+    <title>商品排序</title>
+</head>
+
+<body>
+    <div class="goods">
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

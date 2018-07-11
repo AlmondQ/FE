@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .jstab {
+            width: 300px;
+            height: 300px;
+            background-color: aliceblue;
+        }
+        
+        li {
+            list-style: none;
+            display: inline-block;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+        }
+
+        .tabs li {
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            height: 50px;
+            border-right: 1px solid grey;
+            border-top: 1px solid grey;
+            border-bottom: 1px solid grey;
+        }
+
+        .tabs li:first-child {
+            border-left: 1px solid grey;
+        }
+
+        .content {
+            height: 250px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .show {
+            display: visibily;
+        }
+
+        .circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: brown;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <title>Js选项卡</title>
+</head>
+<body>
+    <div class="jstab">
+        <ul class="tabs">
+            <li>Tab1</li><!--
+         --><li>Tab2</li>
+        </ul>
+        <ul class="content">
+            <li class="show">
+                <div class="circle">
+                    1
+                </div>
+            </li>
+            <li class="hide">
+                <div class="circle">
+                    2
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    // 给tab添加事件
+    var tab = document.querySelector(".tabs");
+    var tabs = tab.children;
+    for (var i=0; i<tabs.length; i++){
+        tabs[i].index = i;
+        tabs[i].addEventListener("click", function(event){
+            var content = document.querySelector(".content");
+            var contents = content.children;
+            for(var j=0; j<tabs.length; j++){
+                contents[j].className = "hide";
+            }
+            contents[this.index].className = "show";
+        }, true);
+    }
+</script>
+</html>
