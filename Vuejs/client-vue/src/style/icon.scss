@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'iconfont';  /* project id 1305280 */
+    src: url('//at.alicdn.com/t/font_1305280_t4l2pti9m9r.eot');
+    src: url('//at.alicdn.com/t/font_1305280_t4l2pti9m9r.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1305280_t4l2pti9m9r.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1305280_t4l2pti9m9r.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1305280_t4l2pti9m9r.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1305280_t4l2pti9m9r.svg#iconfont') format('svg');
+  }
+
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:32px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-tianjia:before { 
+    content: '\e602';
+}
+
+.icon-index:before {
+    content: '\e605';
+}
+
+.icon-setting:before {
+    content: '\e603';
+}
+
+.icon-friends:before {
+    content: '\e606';
+}
+
+.icon-add:before {
+    content: '\e607';
+}

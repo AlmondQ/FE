@@ -1,0 +1,35 @@
+$card-height: 60px;
+$card-margin: 0 20px;
+
+body {
+    background-color: #f8f8f8;
+}
+
+a {
+    text-decoration: none;
+    &:active, &:visited, &:hover, &:link {
+        color : #666;
+    }
+}
+
+.card-wrap {
+    min-height: $card-height;
+    margin: $card-margin;
+    background-color: #fff;
+    border: solid 1px #f0f0f0;
+}
+
+.top-wrap {
+    height: 100%;
+}
+
+.main-wrap {
+    overflow: auto;
+    padding-top: 50px;
+    height: 100%;
+    &::after {
+        content: '';
+        display: block;
+        height: 50px;
+    }
+}
